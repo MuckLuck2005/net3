@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string str1 = "Hello, world!";
+        string str2 = "Hello, friends!";
+
+        int index = 7;
+
+        if (index >= 0 && index < str1.Length && index < str2.Length)
+        {
+            char charStr1 = str1[index];
+            char charStr2 = str2[index];
+
+            if (charStr1 == charStr2)
+            {
+                Console.WriteLine($"The character at position {index} is the same in both strings: '{charStr1}'");
+            }
+            else
+            {
+                Console.WriteLine($"The character at position {index} is different in the two strings:");
+                Console.WriteLine($"In the first string: '{charStr1}'");
+                Console.WriteLine($"In the second string: '{charStr2}'");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Error: the index {index} is out of bounds for one of the strings.");
+        }
+    }
+}
