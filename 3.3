@@ -1,0 +1,46 @@
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
+
+class Program
+{
+    static void Main()
+    {
+        string filePath = @"C:\text\text.txt";
+
+        if (!File.Exists(filePath))
+        {
+            Console.WriteLine($"Файл 'C:\text\text.txt' не знайдено.");
+            return;
+        }
+
+        string text = ReadTextFromFile(filePath);
+
+        Console.WriteLine("Текст з файлу:");
+        Console.WriteLine(text);
+
+        bool testResult = TestForOneGroup(text);
+
+        Console.WriteLine("\nРезультат для пошуку групи літер \"one\":");
+        Console.WriteLine(testResult ? "Групу літер \"one\" знайдено." : "Групу літер \"one\" не знайдено.");
+    }
+
+    static string ReadTextFromFile(string filePath)
+    {
+        try
+        {
+            return File.ReadAllText(filePath);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Помилка зчитування файлу: {ex.Message}");
+            return string.Empty;
+        }
+    }
+
+    static bool TestForOneGroup(string text)
+    {
+        Regex regex = new Regex(@"\bone\b", RegexOptions.IgnoreCase);
+        return regex.IsMatch(text);
+    }
+}
