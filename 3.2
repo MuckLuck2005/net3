@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введіть кількість співробітників:");
+        int n = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Введіть мінімальний зріст співробітника (в сантиметрах):");
+        int minHeight = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Введіть максимальний зріст співробітника (в сантиметрах):");
+        int maxHeight = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Введіть мінімальну вагу співробітника (в кілограмах):");
+        double minWeight = Convert.ToDouble(Console.ReadLine());
+
+        Console.WriteLine("Введіть максимальну вагу співробітника (в кілограмах):");
+        double maxWeight = Convert.ToDouble(Console.ReadLine());
+
+        Random random = new Random();
+
+        int[] heights = new int[n];
+        double[] weights = new double[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            heights[i] = random.Next(minHeight, maxHeight + 1);
+            weights[i] = random.NextDouble() * (maxWeight - minWeight) + minWeight;
+        }
+
+        Array.Sort(heights, weights);
+
+        Console.WriteLine("Список співробітників (зріст, вага):");
+        for (int i = 0; i < n; i++)
+        {
+            Console.WriteLine($"Співробітник {i + 1}: {heights[i]} см, {weights[i]} кг");
+        }
+    }
+}
