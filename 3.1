@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int n = 10;
+
+        int lowerLimit = 0;
+        int upperLimit = 100;
+
+        Random random = new Random();
+
+        int[] array1 = new int[n];
+        int[] array2 = new int[n];
+
+        for (int i = 0; i < n; i++)
+        {
+            array1[i] = random.Next(lowerLimit, upperLimit);
+            array2[i] = random.Next(lowerLimit, upperLimit);
+        }
+
+        Array.Sort(array1);
+
+        Console.WriteLine("Відсортований масив array1:");
+        foreach (int num in array1)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+
+        Console.WriteLine("Масив array2:");
+        foreach (int num in array2)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+}
